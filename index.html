@@ -67,7 +67,18 @@
 
         document.getElementById('quizForm').addEventListener('submit', function(event) {
             event.preventDefault(); // 阻止表单默认提交行为
-            alert('答题已提交');
+            const q1Answer = document.querySelector('input[name="q1"]:checked');
+            const q2Answer = document.querySelector('input[name="q2"]:checked');
+            let score = 0;
+
+            if (q1Answer && q1Answer.value === 'A') {
+                score++;
+            }
+            if (q2Answer && q2Answer.value === 'A') {
+                score++;
+            }
+
+            alert(`你的答案已提交，你的得分是 ${score}/2`);
         });
     </script>
 </body>
