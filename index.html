@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录与答题系统</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 登录表单 -->
+        <form id="loginForm">
+            <h2>登录</h2>
+            <label for="username">用户名:</label>
+            <input type="text" id="username" name="username" required><br><br>
+            <label for="password">密码:</label>
+            <input type="password" id="password" name="password" required><br><br>
+            <button type="submit">登录</button>
+        </form>
+
+        <!-- 答题表单 -->
+        <form id="quizForm" class="hidden">
+            <h2>选择题</h2>
+            <p>问题1: HTML代表什么？</p>
+            <input type="radio" id="q1a1" name="q1" value="A"><label for="q1a1">A) Hyper Text Markup Language</label><br>
+            <input type="radio" id="q1a2" name="q1" value="B"><label for="q1a2">B) High Text Markup Language</label><br>
+            <input type="radio" id="q1a3" name="q1" value="C"><label for="q1a3">C) Hyper Tabular Markup Language</label><br><br>
+
+            <p>问题2: CSS代表什么？</p>
+            <input type="radio" id="q2a1" name="q2" value="A"><label for="q2a1">A) Cascading Style Sheets</label><br>
+            <input type="radio" id="q2a2" name="q2" value="B"><label for="q2a2">B) Colorful Style Sheets</label><br>
+            <input type="radio" id="q2a3" name="q2" value="C"><label for="q2a3">C) Computer Style Sheets</label><br><br>
+
+            <button type="submit">提交答案</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // 阻止表单默认提交行为
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // 简单的验证逻辑（实际应用中应使用更安全的方法）
+            if (username === 'user' && password === 'pass') {
+                document.getElementById('loginForm').classList.add('hidden');
+                document.getElementById('quizForm').classList.remove('hidden');
+            } else {
+                alert('用户名或密码错误');
+            }
+        });
+
+        document.getElementById('quizForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // 阻止表单默认提交行为
+            alert('答题已提交');
+        });
+    </script>
+</body>
+</html>
